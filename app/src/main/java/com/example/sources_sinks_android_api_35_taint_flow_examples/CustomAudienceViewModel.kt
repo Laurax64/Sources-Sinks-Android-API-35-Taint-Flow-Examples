@@ -28,7 +28,7 @@ class CustomAudienceViewModel() : ViewModel() {
      *
      * A custom audience is an abstract grouping of users with similar demonstrated interests.
      */
-    private fun getCustomAudienceName() {
+    fun getCustomAudienceName() {
         val builder = FetchAndJoinCustomAudienceRequest
             .Builder(Uri.parse("content://com.example.customaudience"))
             .setName("discount-seekers") // Sensitive user data
