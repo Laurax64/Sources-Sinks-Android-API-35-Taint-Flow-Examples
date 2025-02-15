@@ -1,8 +1,9 @@
-package com.example.androidApi35TaintFlowExamples
+package com.example.sources_sinks_android_api_35_taint_flow_examples
 
 import android.adservices.customaudience.FetchAndJoinCustomAudienceRequest
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,14 +27,14 @@ class CustomAudienceViewModel : ViewModel() {
      *
      * A custom audience is an abstract grouping of users with similar demonstrated interests.
      */
-    fun getCustomAudienceName() {
+    private fun getCustomAudienceName() {
+        val builder =
+            FetchAndJoinCustomAudienceRequest
+                .Builder(Uri.parse("content://com.example.customaudience"))
+                .setName("discount-seekers") // Sensitive user data
+        val fetchAndJoinCustomAudienceRequest = builder.build()
+        val name = fetchAndJoinCustomAudienceRequest.name ?: "" // Sensitive source
         viewModelScope.launch {
-            val builder =
-                FetchAndJoinCustomAudienceRequest
-                    .Builder(Uri.parse("content://com.example.customaudience"))
-                    .setName("discount-seekers") // Sensitive user data
-            val fetchAndJoinCustomAudienceRequest = builder.build()
-            val name = fetchAndJoinCustomAudienceRequest.name ?: "" // Sensitive source
             _customAudienceName.emit(name)
         }
     }
@@ -46,20 +47,25 @@ class CustomAudienceViewModel : ViewModel() {
      * @param context the context to use
      */
     fun storeCustomAudienceNameInExternalFileStorage(context: Context) {
+        val externalDir = context.getExternalFilesDir(null) ?: return
+        val file = File(externalDir, "installed_apps.xml")
+        if (!file.exists()) {
+            file.createNewFile()
+        }
+        getCustomAudienceName()
+        var name = ""
         viewModelScope.launch {
-            val externalDir = context.getExternalFilesDir(null) ?: return@launch
-            val file = File(externalDir, "installed_apps.xml")
-            if (!file.exists()) {
-                file.createNewFile()
-            }
-            getCustomAudienceName()
-            var name = ""
             name = customAudienceName.last()
-            val outputStream = FileOutputStream(file, true)
-            val properties = Properties()
-            properties.setProperty("customAudienceName", name)
-            properties.storeToXML(outputStream, name, Charsets.UTF_8) // Sensitive sink
+        }
+
+        val outputStream = FileOutputStream(file, true)
+
+        val properties = Properties()
+        properties.setProperty("customAudienceName", name)
+        properties.storeToXML(outputStream, name, Charsets.UTF_8) // Sensitive sink
+        viewModelScope.launch {
             _filePath.emit(file.absolutePath)
         }
+        Log.d("CustomAudienceViewModel", "File path: ${filePath.value}")
     }
 }

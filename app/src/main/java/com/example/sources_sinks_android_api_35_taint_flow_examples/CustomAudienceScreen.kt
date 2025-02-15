@@ -1,4 +1,4 @@
-package com.example.androidApi35TaintFlowExamples
+package com.example.sources_sinks_android_api_35_taint_flow_examples
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,7 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.androidApi35TaintFlowExamples.ui.theme.SourcesSinksAndroidAPI35TaintFlowExamplesTheme
+import com.example.sources_sinks_android_api_35_taint_flow_examples.ui.theme.SourcesSinksAndroidAPI35TaintFlowExamplesTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,8 +47,7 @@ fun CustomAudienceScreen(
         ) {
             OutlinedButton(
                 onClick = {
-                    customAudienceViewModel
-                        .storeCustomAudienceNameInExternalFileStorage(context)
+                    customAudienceViewModel.storeCustomAudienceNameInExternalFileStorage(context)
                 },
                 modifier = Modifier.fillMaxWidth(),
             ) {
