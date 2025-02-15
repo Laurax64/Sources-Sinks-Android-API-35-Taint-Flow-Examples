@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sources_sinks_android_api_35_taint_flow_examples"
+    namespace = "com.example.sourcesSinksAndroidApi35TaintFlowExamples"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.sources_sinks_android_api_35_taint_flow_examples"
+        applicationId = "com.example.sourcesSinksAndroidApi35TaintFlowExamples"
         minSdk = 35
         targetSdk = 35
         versionCode = 1
@@ -23,7 +23,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }

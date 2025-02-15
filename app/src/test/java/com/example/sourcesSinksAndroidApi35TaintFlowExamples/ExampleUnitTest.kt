@@ -1,8 +1,7 @@
-package com.example.sources_sinks_android_api_35_taint_flow_examples
+package com.example.sourcesSinksAndroidApi35TaintFlowExamples
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).

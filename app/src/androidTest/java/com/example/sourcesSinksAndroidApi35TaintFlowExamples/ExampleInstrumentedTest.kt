@@ -1,12 +1,10 @@
-package com.example.sources_sinks_android_api_35_taint_flow_examples
+package com.example.sourcesSinksAndroidApi35TaintFlowExamples
 
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
+import androidx.test.platform.app.InstrumentationRegistry
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -20,8 +18,8 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals(
-            "com.example.sources_sinks_android_api_35_taint_flow_examples",
-            appContext.packageName
+            "com.example.sourcesSinksAndroidApi35TaintFlowExamples",
+            appContext.packageName,
         )
     }
 }

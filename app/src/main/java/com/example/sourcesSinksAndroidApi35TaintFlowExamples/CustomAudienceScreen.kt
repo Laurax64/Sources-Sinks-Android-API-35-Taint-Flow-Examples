@@ -1,4 +1,4 @@
-package com.example.sources_sinks_android_api_35_taint_flow_examples
+package com.example.sourcesSinksAndroidApi35TaintFlowExamples
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,14 +16,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.sources_sinks_android_api_35_taint_flow_examples.ui.theme.SourcesSinksAndroidAPI35TaintFlowExamplesTheme
+import com.example.sourcesSinksAndroidApi35TaintFlowExamples.ui.theme.SourcesSinksAndroidAPI35TaintFlowExamplesTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomAudienceScreen(
     modifier: Modifier = Modifier,
-    customAudienceViewModel: CustomAudienceViewModel = CustomAudienceViewModel(
-    ),
+    customAudienceViewModel: CustomAudienceViewModel =
+        CustomAudienceViewModel(),
 ) {
     val context = LocalContext.current
     val filePath by customAudienceViewModel.filePath.collectAsStateWithLifecycle()
@@ -34,22 +34,23 @@ fun CustomAudienceScreen(
             TopAppBar(
                 title = {
                     Text("Custom Audience to External Storage ")
-                }
+                },
             )
-        }
+        },
     ) {
         Column(
-            modifier = modifier
-                .padding(it)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            modifier =
+                modifier
+                    .padding(it)
+                    .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             OutlinedButton(
                 onClick = {
                     customAudienceViewModel
                         .storeCustomAudienceNameInExternalFileStorage(context)
                 },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             ) {
                 Text("Store custom audience name")
             }

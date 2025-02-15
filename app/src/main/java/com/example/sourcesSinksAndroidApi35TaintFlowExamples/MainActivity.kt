@@ -1,4 +1,4 @@
-package com.example.sources_sinks_android_api_35_taint_flow_examples
+package com.example.sourcesSinksAndroidApi35TaintFlowExamples
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.sources_sinks_android_api_35_taint_flow_examples.ui.theme.SourcesSinksAndroidAPI35TaintFlowExamplesTheme
+import com.example.sourcesSinksAndroidApi35TaintFlowExamples.ui.theme.SourcesSinksAndroidAPI35TaintFlowExamplesTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

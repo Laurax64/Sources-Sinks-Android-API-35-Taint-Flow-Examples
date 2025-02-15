@@ -1,4 +1,4 @@
-package com.example.sources_sinks_android_api_35_taint_flow_examples.ui.theme
+package com.example.sourcesSinksAndroidApi35TaintFlowExamples.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
