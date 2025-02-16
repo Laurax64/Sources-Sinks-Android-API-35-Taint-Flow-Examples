@@ -8,11 +8,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.last
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 import java.util.Properties
+import kotlin.text.Charsets
 
 class CustomAudienceViewModel() : ViewModel() {
 
@@ -35,7 +36,7 @@ class CustomAudienceViewModel() : ViewModel() {
         val fetchAndJoinCustomAudienceRequest = builder.build()
         val name = fetchAndJoinCustomAudienceRequest.name ?: "" // Sensitive source
         viewModelScope.launch {
-            _customAudienceName.emit(name)
+            _customAudienceName.update { name }
         }
     }
 
@@ -54,10 +55,7 @@ class CustomAudienceViewModel() : ViewModel() {
             file.createNewFile()
         }
         getCustomAudienceName()
-        var name = ""
-        viewModelScope.launch {
-            name = customAudienceName.last()
-        }
+        var name = customAudienceName.value
 
         val outputStream = FileOutputStream(file, true)
 
