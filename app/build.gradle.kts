@@ -51,6 +51,16 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
+    // Robolectric environment
+    testImplementation(libs.androidx.core)
+    // Mockito framework
+    testImplementation (libs.mockito.core)
+    // mockito-kotlin
+    testImplementation(libs.mockito.kotlin)
+    // Mockk framework
+    testImplementation(libs.mockk)
+    // Coroutines test
+    testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

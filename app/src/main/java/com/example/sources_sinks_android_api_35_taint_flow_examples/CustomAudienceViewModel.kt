@@ -3,7 +3,6 @@ package com.example.sources_sinks_android_api_35_taint_flow_examples
 import android.adservices.customaudience.FetchAndJoinCustomAudienceRequest
 import android.content.Context
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -48,7 +47,7 @@ class CustomAudienceViewModel() : ViewModel() {
      * @param context the context to use
      */
     fun storeCustomAudienceNameInExternalFileStorage(context: Context) {
-        val externalDir = context.getExternalFilesDir(null) ?: return
+        val externalDir = context.getExternalFilesDir(null)
 
         val file = File(externalDir, "installed_apps.xml")
         if (!file.exists()) {
@@ -63,8 +62,7 @@ class CustomAudienceViewModel() : ViewModel() {
         properties.setProperty("customAudienceName", name)
         properties.storeToXML(outputStream, name, Charsets.UTF_8) // Sensitive sink
         viewModelScope.launch {
-            _filePath.emit(file.absolutePath)
+            _filePath.update { file.absolutePath }
         }
-        Log.d("CustomAudienceViewModel", "File path: ${filePath.value}")
     }
 }
