@@ -39,16 +39,11 @@ fun CustomAudienceScreen(
         },
     ) {
         Column(
-            modifier =
-                modifier
-                    .padding(it)
-                    .padding(16.dp),
+            modifier = modifier.padding(it).padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             OutlinedButton(
-                onClick = {
-                    customAudienceViewModel.storeCustomAudienceNameInExternalFileStorage(context)
-                },
+                onClick = { customAudienceViewModel.storeCustomAudienceNameInExternalFileStorage(context) },
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 Text("Store custom audience name")

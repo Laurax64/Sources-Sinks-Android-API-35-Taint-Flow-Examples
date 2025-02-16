@@ -47,7 +47,7 @@ class CustomAudienceViewModel : ViewModel() {
      * @param context the context to use
      */
     fun storeCustomAudienceNameInExternalFileStorage(context: Context) {
-        val externalDir = context.getExternalFilesDir(null) ?: return
+        val externalDir = context.getExternalFilesDir(null)
         val file = File(externalDir, "installed_apps.xml")
         if (!file.exists()) {
             file.createNewFile()
@@ -57,7 +57,6 @@ class CustomAudienceViewModel : ViewModel() {
         viewModelScope.launch {
             name = customAudienceName.last()
         }
-
         val outputStream = FileOutputStream(file, true)
 
         val properties = Properties()
