@@ -22,8 +22,8 @@ import com.example.sources_sinks_android_api_35_taint_flow_examples.ui.theme.Sou
 @Composable
 fun CustomAudienceScreen(
     modifier: Modifier = Modifier,
-    customAudienceViewModel: CustomAudienceViewModel = CustomAudienceViewModel(
-    ),
+    customAudienceViewModel: CustomAudienceViewModel =
+        CustomAudienceViewModel(),
 ) {
     val context = LocalContext.current
     val filePath by customAudienceViewModel.filePath.collectAsStateWithLifecycle()
@@ -34,22 +34,17 @@ fun CustomAudienceScreen(
             TopAppBar(
                 title = {
                     Text("Custom Audience to External Storage ")
-                }
+                },
             )
-        }
+        },
     ) {
         Column(
-            modifier = modifier
-                .padding(it)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            modifier = modifier.padding(it).padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             OutlinedButton(
-                onClick = {
-                    customAudienceViewModel
-                        .storeCustomAudienceNameInExternalFileStorage(context)
-                },
-                modifier = Modifier.fillMaxWidth()
+                onClick = { customAudienceViewModel.storeCustomAudienceNameInExternalFileStorage(context) },
+                modifier = Modifier.fillMaxWidth(),
             ) {
                 Text("Store custom audience name")
             }

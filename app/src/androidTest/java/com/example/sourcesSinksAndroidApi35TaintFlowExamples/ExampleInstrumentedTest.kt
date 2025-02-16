@@ -1,4 +1,4 @@
-package com.example.sources_sinks_android_api_35_taint_flow_examples
+package com.example.sourcesSinksAndroidApi35TaintFlowExamples
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
